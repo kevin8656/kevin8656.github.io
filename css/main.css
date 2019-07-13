@@ -1833,7 +1833,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #ffcfba;
+  background: #ffff24;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2842,7 +2842,7 @@ pre .javascript .function {
 }
 .site-nav-toggle {
   left: 20px;
-  top: 50%;
+  top: 33%;
   -webkit-transform: translateY(-50%);
   -webkit-transform: translateY(-50%);
   -moz-transform: translateY(-50%);
