@@ -91,10 +91,24 @@
 <meta property="og:site_name" content="KevinHuang&#39;s Blog">
 <meta property="og:description" content="前言 專案建得好，續寫維護沒煩惱——-好懶得寫環境安裝XD  因為公司最近的需求，我們要用 .NET Core來建構一個MVC架構的WEB API專案">
 <meta property="og:locale" content="zh-tw">
-<meta property="og:updated_time" content="2019-07-13T12:32:51.822Z">
+<meta property="og:image" content="https://kevin8656.github.io/2019/07/13/20190713-DotNetCore-GettingStarted-1/1.jpg">
+<meta property="og:image" content="https://kevin8656.github.io/2019/07/13/20190713-DotNetCore-GettingStarted-1/2.png">
+<meta property="og:image" content="https://kevin8656.github.io/2019/07/13/20190713-DotNetCore-GettingStarted-1/3.png">
+<meta property="og:image" content="https://kevin8656.github.io/2019/07/13/20190713-DotNetCore-GettingStarted-1/4.png">
+<meta property="og:image" content="https://kevin8656.github.io/2019/07/13/20190713-DotNetCore-GettingStarted-1/5.png">
+<meta property="og:image" content="https://kevin8656.github.io/2019/07/13/20190713-DotNetCore-GettingStarted-1/6.png">
+<meta property="og:image" content="https://kevin8656.github.io/2019/07/13/20190713-DotNetCore-GettingStarted-1/7.png">
+<meta property="og:image" content="https://kevin8656.github.io/2019/07/13/20190713-DotNetCore-GettingStarted-1/8.png">
+<meta property="og:image" content="https://kevin8656.github.io/2019/07/13/20190713-DotNetCore-GettingStarted-1/9.png">
+<meta property="og:image" content="https://kevin8656.github.io/2019/07/13/20190713-DotNetCore-GettingStarted-1/10.png">
+<meta property="og:image" content="https://kevin8656.github.io/2019/07/13/20190713-DotNetCore-GettingStarted-1/11.png">
+<meta property="og:image" content="https://kevin8656.github.io/2019/07/13/20190713-DotNetCore-GettingStarted-1/12.png">
+<meta property="og:image" content="https://kevin8656.github.io/2019/07/13/20190713-DotNetCore-GettingStarted-1/13.png">
+<meta property="og:updated_time" content="2019-07-13T12:47:03.808Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【.Net Core入門-1】使用ASP.NET Core 建構WEB API專案 ft.環境安裝">
 <meta name="twitter:description" content="前言 專案建得好，續寫維護沒煩惱——-好懶得寫環境安裝XD  因為公司最近的需求，我們要用 .NET Core來建構一個MVC架構的WEB API專案">
+<meta name="twitter:image" content="https://kevin8656.github.io/2019/07/13/20190713-DotNetCore-GettingStarted-1/1.jpg">
 
 
 
@@ -428,31 +442,36 @@
 <p><a href="https://visualstudio.microsoft.com/zh-hant/?rr=https%3A%2F%2Fwww.google.com%2F" target="_blank" rel="noopener">下載Visual Studio官方連結</a></p>
 <p>（大家可以下載Community版本，我自己是使用公司電腦，裡面內帶Professional版本的Visual Studio 2017）</p>
 <ol>
-<li>來到官方的下載頁面，選擇Community版本下載</li>
-<li>接下來跑出下載畫面之後，就把Visual Studio的下載器下載下來吧！</li>
-<li>執行Visual Studio安裝器之後，請勾選一些會用到的功能（如下圖）</li>
-<li>還有下面這兩個也可以勾選一下一起安裝</li>
-<li>假設安裝完成，就可以打開Visual Studio準備開始使用囉！（我這邊沒有重新安裝一次，所以只提供我自己的Visual Studio畫面給大家參考參考）</li>
+<li><p>來到官方的下載頁面，選擇Community版本下載<br><img src="1.jpg" alt="1"></p>
+</li>
+<li><p>接下來跑出下載畫面之後，就把Visual Studio的下載器下載下來吧！<br><img src="2.png" alt="2"></p>
+</li>
+<li><p>執行Visual Studio安裝器之後，請勾選一些會用到的功能（如下圖）<br><img src="3.png" alt="3"></p>
+</li>
+<li><p>還有下面這兩個也可以勾選一下一起安裝<br><img src="4.png" alt="4"></p>
+</li>
+<li><p>假設安裝完成，就可以打開Visual Studio準備開始使用囉！（我這邊沒有重新安裝一次，所以只提供我自己的Visual Studio畫面給大家參考參考）<br><img src="5.png" alt="5"></p>
+</li>
 </ol>
 <h3 id="安裝最新版-NET-Core"><a href="#安裝最新版-NET-Core" class="headerlink" title="安裝最新版 .NET Core"></a>安裝最新版 .NET Core</h3><p>因為不確定大家Visual Studio裡面內建的 .NET Core版本是不是最新的2.2版本，因此這邊也寫一下要安裝最新版的 .NET Core，以免未來會跟套件版本不相容。</p>
 <p><a href="https://dotnet.microsoft.com/download" target="_blank" rel="noopener">.NET Core下載連結</a></p>
-<p>請點選下圖紅框的那個下載並安裝哦，安裝過程就跟一般的驅動程式安裝沒兩樣，這邊就直接略過了。</p>
+<p>請點選下圖紅框的那個下載並安裝哦，安裝過程就跟一般的驅動程式安裝沒兩樣，這邊就直接略過了。<br><img src="6.png" alt="6"></p>
 <h2 id="建立-NET-Core-WEB-API專案"><a href="#建立-NET-Core-WEB-API專案" class="headerlink" title="建立 .NET Core WEB API專案"></a>建立 .NET Core WEB API專案</h2><h3 id="建立專案"><a href="#建立專案" class="headerlink" title="建立專案"></a>建立專案</h3><p>接下來要帶大家一起建立WEB API專案，我的Visual Studio介面是英文版的，如果有人是裝中文版的話，就自己對照相對位置囉！</p>
 <ol>
-<li><p>首先打開Visual Studio軟體</p>
+<li><p>首先打開Visual Studio軟體<br><img src="7.png" alt="7"></p>
 </li>
-<li><p>接下來點選File-&gt;New-&gt;Project來建立一個新專案</p>
+<li><p>接下來點選File-&gt;New-&gt;Project來建立一個新專案<br><img src="8.png" alt="8"></p>
 </li>
-<li><p>選擇左邊C#中的Web-&gt;點選 ASP .NET Core Web Application-&gt;取一個適合的檔案名稱-&gt;點選OK建立專案</p>
+<li><p>選擇左邊C#中的Web-&gt;點選 ASP .NET Core Web Application-&gt;取一個適合的檔案名稱-&gt;點選OK建立專案<br><img src="9.png" alt="9"></p>
 </li>
-<li><p>接下來要選擇專案類型，我們要選擇的是API專案（如下圖），這個專案建立後只會有一個Controller資料夾，裡面有一個ValueController，內容會有範例WEB API程式碼，稍後會帶大家看一下。</p>
+<li><p>接下來要選擇專案類型，我們要選擇的是API專案（如下圖），這個專案建立後只會有一個Controller資料夾，裡面有一個ValueController，內容會有範例WEB API程式碼，稍後會帶大家看一下。<br><img src="10.png" alt="10"></p>
 </li>
-<li><p>專案建立完成後，就可以看到Visual Studio已經幫我們建立了預設的Controllers/ValueController.cs，並且裡面已經有寫了一些基本的GET and POST Function。</p>
+<li><p>專案建立完成後，就可以看到Visual Studio已經幫我們建立了預設的Controllers/ValueController.cs，並且裡面已經有寫了一些基本的GET and POST Function。<br><img src="11.png" alt="11"></p>
 </li>
 </ol>
 <p>到這一步驟，WEB API專案就建立好囉！下一步我們就要開始安裝Entity FrameWork Core2套件，並且初始化我們的Models了！</p>
-<p>那麼假設我們建立的是Web Application(Model-View-Controller)的專案呢（如下圖）?我在建立專案前，也有想嘗試建立這個專案類型，想說有MVC架構，之後再把它寫成WEB API的格式。</p>
-<p>這種專案類型建立起來之後，就會有基礎的MVC架構，不過裡面的程式碼就不會有WEB API的基本Function囉！</p>
+<p>那麼假設我們建立的是Web Application(Model-View-Controller)的專案呢（如下圖）?我在建立專案前，也有想嘗試建立這個專案類型，想說有MVC架構，之後再把它寫成WEB API的格式。<br><img src="12.png" alt="12"></p>
+<p>這種專案類型建立起來之後，就會有基礎的MVC架構，不過裡面的程式碼就不會有WEB API的基本Function囉！<br><img src="13.png" alt="13"></p>
 <p>長得其實就跟我以前寫 .NET FrameWork MVC的時候的專案架構一樣，相較之下因為後續要做一些操作，我覺得還是建立WEB API專案會比較方便啦~</p>
 <p>所以這篇文章就到這邊囉，下一篇會帶大家裝設Entity FrameWork Core2的套件，並且用他來初始化我們專案的Models與資料庫的對應，敬請期待吧！</p>
 <p>另外附上本次專案的GitHub連結，大家如果想參考也可以把這個專案抓下來看哦（雖然這篇沒有做什麼事情啦，但之後還會有其他的進度，也可以當作範例來參考哦~！）</p>
