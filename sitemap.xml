@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://kevin8656.github.io/archives/index.html</loc>
+    
+    <lastmod>2019-07-13T06:07:10.867Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://kevin8656.github.io/tags/index.html</loc>
     
     <lastmod>2019-07-13T05:56:19.437Z</lastmod>
@@ -40,13 +47,6 @@
     <loc>https://kevin8656.github.io/about/index.html</loc>
     
     <lastmod>2019-07-13T05:09:43.159Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://kevin8656.github.io/archives/index.html</loc>
-    
-    <lastmod>2019-07-12T09:41:38.000Z</lastmod>
     
   </url>
   
