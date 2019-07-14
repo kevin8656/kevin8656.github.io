@@ -8,7 +8,7 @@
       <link href="/2019/07/14/20190714-ChangeVisualStudio2017Language/"/>
       <url>/2019/07/14/20190714-ChangeVisualStudio2017Language/</url>
       
-        <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>距離上一次寫部落格文章，大概已經是四個月以前的事情了(<span> ASP.Net</span> Core的Web API專案入門 是從點部落複製過來的哈哈)</p><p>翻開之前在點部落寫的一篇 <span> ASP.Net</span> Core的Web API專案入門教學文章，發現文章內當時截圖都是用公司電腦截圖的</p><p>公司電腦預設是使用英文介面，而我現在在Mac上透過Parallel Desktop建立的Windows 10虛擬機則是中文版的</p><a id="more"></a><p>當初在虛擬機裡面安裝的Visual Studio 2017也是用中文版安裝的，像下圖這樣</p><p><img src="1.jpg" alt="1"></p><p>這讓我很想要把現在的Visual Studio介面改成英文版的，不然我會有截圖語言不統一的強迫症xDD</p><p>因此剛剛摸索了一下，發現語系包是可以不用重新安裝整個Visual Studio，也不用管Windows 10預設系統語言的。</p><p>來記錄一下該怎麼調整Visual Studio語言，以免有人真的為了換介面語言而傻傻的重新安裝整個VS。</p><h2 id="安裝語言包"><a href="#安裝語言包" class="headerlink" title="安裝語言包"></a>安裝語言包</h2><ol><li><p>首先先打開Visual Studio 2017的中文版介面。</p><p> <img src="1.jpg" alt="1"></p></li><li><p>接下來點選上面「工具」-&gt;「取得工具與功能」。</p><p> <img src="2.jpg" alt="2"></p></li><li><p>畫面會出現Visual Studio Installer，跟最初安裝Visual Studio 2017的時候長得一模模一樣樣，點選到「語言套件」分頁。</p><p> <img src="3.jpg" alt="3"></p></li><li><p>把「英文」選起來，並且選取「在下載時安裝」，最後點選「修改」來安裝英文語言套件。</p><p> <img src="4.jpg" alt="4"></p></li><li><p>Visual Studio可能會跳出提示要你關閉一些正在進行中的進程，就點「繼續」他就會幫你儲存狀態並關閉了。</p><p> <img src="5.jpg" alt="5"></p></li><li><p>等待進度條開始下載與安裝（請忽略我慢得要命的網速，我用手機網路T^T）。</p><p> <img src="6.jpg" alt="6"></p></li><li><p>如果你網速跟我一樣慢，大概等個十分鐘之後安裝完成畫面就會長得像這樣。</p><p> <img src="7.jpg" alt="7"></p></li><li><p>接下來再點開「工具」-&gt; 「選項」。</p><p> <img src="8.jpg" alt="8"></p></li><li><p>選取左邊「國際設定」，並將語言調整為English(若沒有做前述的安裝語言套件動作，則這邊只會有中文的選項)。</p><p> <img src="9.jpg" alt="9"></p></li><li><p>Visual Studio 會提示你要重新啟動才會生效，點選「確定」，並且手動將Visual Studio重新啟動。</p><p><img src="10.jpg" alt="10"></p></li><li><p>大功告成，你的Visual Studio 2017介面就變成英文的囉！（若要切換成其他語系應該也是一樣的做法）</p><p><img src="11.jpg" alt="11"></p></li></ol>]]></content>
+        <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>距離上一次寫部落格文章，大概已經是四個月以前的事情了</p><p>(<span> ASP.Net</span> Core的Web API專案入門 是從點部落複製過來的哈哈)</p><p>翻開之前在點部落寫的一篇 <span> ASP.Net</span> Core的Web API專案入門教學文章，發現文章內當時截圖都是用公司電腦截圖的</p><p>公司電腦預設是使用英文介面，而我現在在Mac上透過Parallel Desktop建立的Windows 10虛擬機則是中文版的</p><a id="more"></a><p>當初在虛擬機裡面安裝的Visual Studio 2017也是用中文版安裝的，像下圖這樣</p><p><img src="1.jpg" alt="1"></p><p>這讓我很想要把現在的Visual Studio介面改成英文版的，不然我會有截圖語言不統一的強迫症xDD</p><p>因此剛剛摸索了一下，發現語系包是可以不用重新安裝整個Visual Studio，也不用管Windows 10預設系統語言的。</p><p>來記錄一下該怎麼調整Visual Studio語言，以免有人真的為了換介面語言而傻傻的重新安裝整個VS。</p><h2 id="安裝語言包"><a href="#安裝語言包" class="headerlink" title="安裝語言包"></a>安裝語言包</h2><ol><li><p>首先先打開Visual Studio 2017的中文版介面。</p><p> <img src="1.jpg" alt="1"></p></li><li><p>接下來點選上面「工具」-&gt;「取得工具與功能」。</p><p> <img src="2.jpg" alt="2"></p></li><li><p>畫面會出現Visual Studio Installer，跟最初安裝Visual Studio 2017的時候長得一模模一樣樣，點選到「語言套件」分頁。</p><p> <img src="3.jpg" alt="3"></p></li><li><p>把「英文」選起來，並且選取「在下載時安裝」，最後點選「修改」來安裝英文語言套件。</p><p> <img src="4.jpg" alt="4"></p></li><li><p>Visual Studio可能會跳出提示要你關閉一些正在進行中的進程，就點「繼續」他就會幫你儲存狀態並關閉了。</p><p> <img src="5.jpg" alt="5"></p></li><li><p>等待進度條開始下載與安裝（請忽略我慢得要命的網速，我用手機網路T^T）。</p><p> <img src="6.jpg" alt="6"></p></li><li><p>如果你網速跟我一樣慢，大概等個十分鐘之後安裝完成畫面就會長得像這樣。</p><p> <img src="7.jpg" alt="7"></p></li><li><p>接下來再點開「工具」-&gt; 「選項」。</p><p> <img src="8.jpg" alt="8"></p></li><li><p>選取左邊「國際設定」，並將語言調整為English(若沒有做前述的安裝語言套件動作，則這邊只會有中文的選項)。</p><p> <img src="9.jpg" alt="9"></p></li><li><p>Visual Studio 會提示你要重新啟動才會生效，點選「確定」，並且手動將Visual Studio重新啟動。</p><p><img src="10.jpg" alt="10"></p></li><li><p>大功告成，你的Visual Studio 2017介面就變成英文的囉！（若要切換成其他語系應該也是一樣的做法）</p><p><img src="11.jpg" alt="11"></p></li></ol>]]></content>
       
       
       <categories>
@@ -84,8 +84,6 @@
       
         <tags>
             
-            <tag> 面試 </tag>
-            
             <tag> 新加坡商鈦坦科技 </tag>
             
             <tag> 外商 </tag>
@@ -95,6 +93,8 @@
             <tag> 軟體工程師 </tag>
             
             <tag> 資訊公司 </tag>
+            
+            <tag> 面試 </tag>
             
             <tag> 實習面試 </tag>
             
