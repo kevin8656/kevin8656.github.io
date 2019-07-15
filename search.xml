@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>【Notion學習筆記】初入Notion-每週隨記（Weekly Note）</title>
+      <link href="/2019/07/15/20190715-Notion-Usage-1/"/>
+      <url>/2019/07/15/20190715-Notion-Usage-1/</url>
+      
+        <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>前幾天看到網路上大家很多人都在分享Notion這個筆記軟體，似乎集合了各種筆記功能，像是Evernote + Trello的合體，並且多了一些自己的功能</p><p>感覺是個綜合的筆記軟體，看大家這麼熱烈的分享，讓我也想要來玩玩這個筆記軟體。</p><p>而在昨天安裝完Notion之後，今天開始試用了一下，因此想要紀錄一下今天試用的感受。</p><p>首先先附上有我邀請碼的Notion註冊連結，有興趣的朋友可以點以下連結去註冊並且使用看看免費版Notion哦~</p><p><a href="https://www.notion.so/?r=5f300d13079f4ced81832d860b57a12d" target="_blank" rel="noopener">Notion註冊連結</a></p><p>點進去之後看到下圖上面箭頭的地方有顯示我的名字，就是有成功哦(用邀請碼註冊可以拿到10USD，然後我也能拿到5USD，未來如果免費版不夠用就可以拿這些錢去抵每月花費!每月似乎是4USD吧!)</p><a id="more"></a><p><img src="2.jpg" alt="2"></p><h2 id="Notion初次體驗-Weekly-Note"><a href="#Notion初次體驗-Weekly-Note" class="headerlink" title="Notion初次體驗-Weekly Note"></a>Notion初次體驗-Weekly Note</h2><h3 id="Weekly-Note的用途與目的"><a href="#Weekly-Note的用途與目的" class="headerlink" title="Weekly Note的用途與目的"></a>Weekly Note的用途與目的</h3><p><img src="1.jpg" alt="1"></p><p>網路上剛好看到<a href="https://medium.com/@Johann016/教學-一小時加入-notion-so-cd2b5ca8a7fe" target="_blank" rel="noopener">這篇文章</a>在講1小時入門Notion的練習，不過我看來看去只對裡頭的其中一個練習主題有興趣，那就是「Weekly Note」。</p><p>「Weekly Note」就是將每週分成Monday到Sunday，並且可以讓我在每天不管是上班或者上課的過程，有任何想要紀錄的想法、筆記、資料或是網頁等，都可以將這些東西「暫存」到Notion的Weekly Note中記錄下來，等一週後再回過頭將這些臨時的想法歸類、整理。</p><p>那篇文章中說到：在「暫存」的過程中，你可以嘗試不同的編輯：放大標題、改變顏色、用 Toggle List 整理等等。<strong>這樣，你一邊熟悉 Notion 的指定，一邊收納整理了一週的想法。</strong></p><p>我覺得非常有道理，所以今天就花了點時間試了試，最後目前使用的畫面大概如下圖：</p><p><img src="3.jpg" alt="3"></p><p>若沒有什麼問題，我們就直接開始做出一個Weekly Note的模板來記錄自己每天的想法吧！</p><h3 id="開始實作Weekly-Note"><a href="#開始實作Weekly-Note" class="headerlink" title="開始實作Weekly Note"></a>開始實作Weekly Note</h3><hr><p><em>To Be Continued…</em></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Notion筆記軟體 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Notion筆記 </tag>
+            
+            <tag> 學習心得 </tag>
+            
+            <tag> 學習紀錄 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>【Visual Studio 使用筆記】更換Visual Studio 2017版介面語言</title>
       <link href="/2019/07/14/20190714-ChangeVisualStudio2017Language/"/>
       <url>/2019/07/14/20190714-ChangeVisualStudio2017Language/</url>
@@ -129,13 +158,13 @@
             
             <tag> 碩士班口試 </tag>
             
+            <tag> 面試心得 </tag>
+            
             <tag> 台科大資管 </tag>
             
             <tag> 台科大資管丙組 </tag>
             
             <tag> 臺灣科技大學 </tag>
-            
-            <tag> 面試心得 </tag>
             
         </tags>
       
@@ -166,8 +195,6 @@
             
             <tag> 碩士班口試 </tag>
             
-            <tag> 面試心得 </tag>
-            
             <tag> 交大丁組 </tag>
             
             <tag> 交大戊組 </tag>
@@ -175,6 +202,8 @@
             <tag> 交大資工 </tag>
             
             <tag> 交通大學 </tag>
+            
+            <tag> 面試心得 </tag>
             
         </tags>
       
