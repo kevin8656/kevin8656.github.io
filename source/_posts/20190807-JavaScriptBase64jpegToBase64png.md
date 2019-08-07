@@ -30,7 +30,7 @@ tags: [blob,Base64,JS圖片格式轉換]
       const payload = {};
       payload.id = customerId;
       const base64png = await this.jpeg2png(this.img);
-      payload.canvas = this.img;
+      payload.canvas = base64png;
       this.$emit("dialogWebCamUploadFiles", payload);
       this.handleClose();
     },
@@ -53,11 +53,13 @@ tags: [blob,Base64,JS圖片格式轉換]
 
 這邊我主要是在我上傳檔案（uploadCapture）這個function中先將this.img這個base64/jpeg格式的資料丟入jpeg2png的function裡面轉檔，然後再將轉好的base64png檔案傳至後端儲存。在過程中有使用到canvas這東西，有興趣多了解的人可以[點這裡過去看](https://developer.mozilla.org/zh-TW/docs/Web/API/Canvas_API)
 
-而網路上也有找到一個別人寫的文章是專門在講JavaScript各種圖片格式轉檔語法的，雖然我原封不動抓過來用沒辦法用xDD但是我修修改改之後就可以用了，也算是有幫助，在這邊把裡面用到的各種轉檔方式也放進這篇文章，提供以後遇到此類問題的開發者可以更快找到這些轉來轉去的方法。感謝[image 各種型態轉換(blob, dataURL, canvas) in JavaScript]([https://chiayilai.com/image-%E5%90%84%E7%A8%AE%E5%9E%8B%E6%85%8B%E8%BD%89%E6%8F%9Bblob-dataurl-canvas-in-javascript/](https://chiayilai.com/image-各種型態轉換blob-dataurl-canvas-in-javascript/)) 的作者
+而網路上也有找到一個別人寫的文章是專門在講JavaScript各種圖片格式轉檔語法的，雖然我原封不動抓過來用沒辦法用xDD但是我修修改改之後就可以用了，也算是有幫助，在這邊把裡面用到的各種轉檔方式也放進這篇文章，提供以後遇到此類問題的開發者可以更快找到這些轉來轉去的方法。感謝[image 各種型態轉換(blob, dataURL, canvas) in JavaScript](https://chiayilai.com/image-各種型態轉換blob-dataurl-canvas-in-javascript/)的作者
 
 ---
 
-### 以下紀錄來自[image 各種型態轉換(blob, dataURL, canvas) in JavaScript]([https://chiayilai.com/image-各種型態轉換blob-dataurl-canvas-in-javascript/](https://chiayilai.com/image-各種型態轉換blob-dataurl-canvas-in-javascript/)) 文章
+## 其他轉換方式紀錄
+
+> 以下紀錄來自[image 各種型態轉換(blob, dataURL, canvas) in JavaScript](https://chiayilai.com/image-各種型態轉換blob-dataurl-canvas-in-javascript/)文章
 
 ### blob 轉成 dataURL
 
