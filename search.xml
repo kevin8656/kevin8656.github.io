@@ -15,10 +15,6 @@
           
           <category> WebStorm </category>
           
-          <category> IDE </category>
-          
-          <category> JavaScript </category>
-          
       </categories>
       
       
@@ -27,6 +23,10 @@
             <tag> IDE </tag>
             
             <tag> WebStorm </tag>
+            
+            <tag> JavaScript </tag>
+            
+            <tag> WebPack </tag>
             
         </tags>
       
