@@ -1,5 +1,5 @@
 ---
-title: 在JavaScript中將base64/jpeg轉換成base64/png格式
+title: 【JS圖片格式轉換】Javascript將base64/jpeg轉換成base64/png格式
 date: 2019-08-07 11:53:25
 categories: [JavaScript]
 tags: [blob,Base64,JS圖片格式轉換]

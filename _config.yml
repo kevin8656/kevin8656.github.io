@@ -3,9 +3,9 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: KevinHuang's Blog
-subtitle: 
-description: 樂於分享與交流新知，專長於行動與網頁應用開發（React Native、DotNet Core and FrameWork）、網管（VMWare、AWS）、開源作業系統（CentOS、Ubuntu），擅長語言：JavaScript、C#
+title: 凱文寫程式 | •́ ▾ •̀ |
+subtitle:
+description: 喜歡分享與交流新知，專長：行動與網頁應用開發（React Native、DotNet Core and FrameWork）、網管（VMWare、AWS）、開源作業系統（CentOS、Ubuntu），擅長語言：JavaScript、C#
 keywords:
 author: KevinHuang
 language: zh-tw
@@ -43,7 +43,7 @@ highlight:
   line_number: true
   auto_detect: false
   tab_replace:
-  
+
 # Home page setting
 # path: Root path for your blogs index page. (default = '')
 # per_page: Posts displayed per page. (0 = disable pagination)
@@ -52,10 +52,10 @@ index_generator:
   path: ''
   per_page: 5
   order_by: -date
-  
+
 # Category & Tag
 default_category: uncategorized
-category_map: 
+category_map:
 tag_map:
 
 # Date / Time format
@@ -77,7 +77,7 @@ theme: next
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
-deploy: 
+deploy:
   type: git
   repo: https://github.com/kevin8656/kevin8656.github.io.git
   branch: master

@@ -1,7 +1,7 @@
 ---
 title: 【Git學習筆記】Git Commit Log 最佳實踐
 date: 2019-07-28 20:58:37
-categories: [Git,Tools]
+categories: [Git]
 tags: [Git,Commitizen]
 ---
 ## 前言
