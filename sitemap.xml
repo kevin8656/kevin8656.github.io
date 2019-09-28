@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://kevin8656.github.io/2019/09/28/20190928-dotnetcore3beginner/</loc>
+    
+    <lastmod>2019-09-28T13:44:47.839Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://kevin8656.github.io/2019/07/13/20190713-DotNetCore-GettingStarted-1/</loc>
     
-    <lastmod>2019-09-28T10:00:28.210Z</lastmod>
+    <lastmod>2019-09-28T11:16:32.994Z</lastmod>
     
   </url>
   
@@ -23,14 +30,14 @@
   </url>
   
   <url>
-    <loc>https://kevin8656.github.io/archives/index.html</loc>
+    <loc>https://kevin8656.github.io/about/index.html</loc>
     
     <lastmod>2019-08-14T14:33:47.790Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://kevin8656.github.io/about/index.html</loc>
+    <loc>https://kevin8656.github.io/archives/index.html</loc>
     
     <lastmod>2019-08-14T14:33:47.790Z</lastmod>
     
