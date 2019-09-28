@@ -1,7 +1,7 @@
 ---
-title: 【.Net Core入門-1】使用ASP.NET Core 建構WEB API專案 ft.環境安裝
+title: 【.Net Core2.2】使用ASP.NET Core 建構WEB API專案 ft.環境安裝
 date: 2019-07-13 20:11:37
-categories: [.NetCore C#]
+categories: [ASP.Net Core]
 tags: [DotNetCore,.NetCore,C#,VisualStudio,MVC,WebAPI]
 ---
 ## 前言
@@ -95,8 +95,6 @@ Let's Go！
 
 長得其實就跟我以前寫 .NET FrameWork MVC的時候的專案架構一樣，相較之下因為後續要做一些操作，我覺得還是建立WEB API專案會比較方便啦~
 
-所以這篇文章就到這邊囉，下一篇會帶大家裝設Entity FrameWork Core2的套件，並且用他來初始化我們專案的Models與資料庫的對應，敬請期待吧！
-
-另外附上本次專案的GitHub連結，大家如果想參考也可以把這個專案抓下來看哦（雖然這篇沒有做什麼事情啦，但之後還會有其他的進度，也可以當作範例來參考哦~！）
+所以這篇文章就到這邊囉
 
 [GitHub專案連結](https://github.com/kevin8656/DotNetCoreMVCWebAPI_Project.git)
