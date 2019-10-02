@@ -87,36 +87,36 @@
 <meta name="keywords" content="DotNetCore,ASP.Net Core 3.0,C#,MVC,WebAPI,EF Core 3.0,Visual Studio">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【ASP.Net Core 3.0應用程式開發-3】什麼是MVC？什麼是前後端分離？ ft.安裝EF Core 3.0、初始化資料模型對應">
-<meta property="og:url" content="https://kevin8656.github.io/2019/09/30/20190930-dotnetcore3beginner-3/index.html">
+<meta property="og:url" content="https://kevin8656.github.io/2019/10/03/20190930-dotnetcore3beginner-3/index.html">
 <meta property="og:site_name" content="凱文寫程式 | •́ ▾ •̀ |">
 <meta property="og:description" content="前言接續上一篇我們建立完資料庫及資料表，這一篇會帶大家了解MVC程式架構的基本概念，以及什麼是前後端分離，最後在實作的部分會帶大家在上次建立的API專案中安裝Entity Framework Core 3.0（EF Core 3.0），並在專案中透過EF Core建立Model，該Model會對應到資料庫的資料表結構。  這一系列的文章比較偏向讓大家看完能夠有一些比較基本的觀念，並且會附加比較多的">
 <meta property="og:locale" content="zh-tw">
-<meta property="og:image" content="https://kevin8656.github.io/2019/09/30/20190930-dotnetcore3beginner-3/4.png">
-<meta property="og:image" content="https://kevin8656.github.io/2019/09/30/20190930-dotnetcore3beginner-3/3.png">
-<meta property="og:image" content="https://kevin8656.github.io/2019/09/30/20190930-dotnetcore3beginner-3/2.png">
-<meta property="og:image" content="https://kevin8656.github.io/2019/09/30/20190930-dotnetcore3beginner-3/1.png">
-<meta property="og:image" content="https://kevin8656.github.io/2019/09/30/20190930-dotnetcore3beginner-3/5.png">
-<meta property="og:image" content="https://kevin8656.github.io/2019/09/30/20190930-dotnetcore3beginner-3/6.png">
-<meta property="og:image" content="https://kevin8656.github.io/2019/09/30/20190930-dotnetcore3beginner-3/7.png">
-<meta property="og:image" content="https://kevin8656.github.io/2019/09/30/20190930-dotnetcore3beginner-3/8.png">
-<meta property="og:image" content="https://kevin8656.github.io/2019/09/30/20190930-dotnetcore3beginner-3/9.png">
-<meta property="og:image" content="https://kevin8656.github.io/2019/09/30/20190930-dotnetcore3beginner-3/10.png">
-<meta property="og:image" content="https://kevin8656.github.io/2019/09/30/20190930-dotnetcore3beginner-3/11.png">
-<meta property="og:image" content="https://kevin8656.github.io/2019/09/30/20190930-dotnetcore3beginner-3/12.png">
-<meta property="og:image" content="https://kevin8656.github.io/2019/09/30/20190930-dotnetcore3beginner-3/13.png">
-<meta property="og:image" content="https://kevin8656.github.io/2019/09/30/20190930-dotnetcore3beginner-3/17.png">
-<meta property="og:image" content="https://kevin8656.github.io/2019/09/30/20190930-dotnetcore3beginner-3/14.png">
-<meta property="og:image" content="https://kevin8656.github.io/2019/09/30/20190930-dotnetcore3beginner-3/15.png">
-<meta property="og:image" content="https://kevin8656.github.io/2019/09/30/20190930-dotnetcore3beginner-3/16.png">
-<meta property="og:image" content="https://kevin8656.github.io/2019/09/30/20190930-dotnetcore3beginner-3/18.png">
-<meta property="og:image" content="https://kevin8656.github.io/2019/09/30/20190930-dotnetcore3beginner-3/19.png">
-<meta property="og:image" content="https://kevin8656.github.io/2019/09/30/20190930-dotnetcore3beginner-3/20.png">
-<meta property="og:image" content="https://kevin8656.github.io/2019/09/30/20190930-dotnetcore3beginner-3/21.png">
-<meta property="og:updated_time" content="2019-10-02T17:01:35.533Z">
+<meta property="og:image" content="https://kevin8656.github.io/2019/10/03/20190930-dotnetcore3beginner-3/4.png">
+<meta property="og:image" content="https://kevin8656.github.io/2019/10/03/20190930-dotnetcore3beginner-3/3.png">
+<meta property="og:image" content="https://kevin8656.github.io/2019/10/03/20190930-dotnetcore3beginner-3/2.png">
+<meta property="og:image" content="https://kevin8656.github.io/2019/10/03/20190930-dotnetcore3beginner-3/1.png">
+<meta property="og:image" content="https://kevin8656.github.io/2019/10/03/20190930-dotnetcore3beginner-3/5.png">
+<meta property="og:image" content="https://kevin8656.github.io/2019/10/03/20190930-dotnetcore3beginner-3/6.png">
+<meta property="og:image" content="https://kevin8656.github.io/2019/10/03/20190930-dotnetcore3beginner-3/7.png">
+<meta property="og:image" content="https://kevin8656.github.io/2019/10/03/20190930-dotnetcore3beginner-3/8.png">
+<meta property="og:image" content="https://kevin8656.github.io/2019/10/03/20190930-dotnetcore3beginner-3/9.png">
+<meta property="og:image" content="https://kevin8656.github.io/2019/10/03/20190930-dotnetcore3beginner-3/10.png">
+<meta property="og:image" content="https://kevin8656.github.io/2019/10/03/20190930-dotnetcore3beginner-3/11.png">
+<meta property="og:image" content="https://kevin8656.github.io/2019/10/03/20190930-dotnetcore3beginner-3/12.png">
+<meta property="og:image" content="https://kevin8656.github.io/2019/10/03/20190930-dotnetcore3beginner-3/13.png">
+<meta property="og:image" content="https://kevin8656.github.io/2019/10/03/20190930-dotnetcore3beginner-3/17.png">
+<meta property="og:image" content="https://kevin8656.github.io/2019/10/03/20190930-dotnetcore3beginner-3/14.png">
+<meta property="og:image" content="https://kevin8656.github.io/2019/10/03/20190930-dotnetcore3beginner-3/15.png">
+<meta property="og:image" content="https://kevin8656.github.io/2019/10/03/20190930-dotnetcore3beginner-3/16.png">
+<meta property="og:image" content="https://kevin8656.github.io/2019/10/03/20190930-dotnetcore3beginner-3/18.png">
+<meta property="og:image" content="https://kevin8656.github.io/2019/10/03/20190930-dotnetcore3beginner-3/19.png">
+<meta property="og:image" content="https://kevin8656.github.io/2019/10/03/20190930-dotnetcore3beginner-3/20.png">
+<meta property="og:image" content="https://kevin8656.github.io/2019/10/03/20190930-dotnetcore3beginner-3/21.png">
+<meta property="og:updated_time" content="2019-10-02T17:02:55.272Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【ASP.Net Core 3.0應用程式開發-3】什麼是MVC？什麼是前後端分離？ ft.安裝EF Core 3.0、初始化資料模型對應">
 <meta name="twitter:description" content="前言接續上一篇我們建立完資料庫及資料表，這一篇會帶大家了解MVC程式架構的基本概念，以及什麼是前後端分離，最後在實作的部分會帶大家在上次建立的API專案中安裝Entity Framework Core 3.0（EF Core 3.0），並在專案中透過EF Core建立Model，該Model會對應到資料庫的資料表結構。  這一系列的文章比較偏向讓大家看完能夠有一些比較基本的觀念，並且會附加比較多的">
-<meta name="twitter:image" content="https://kevin8656.github.io/2019/09/30/20190930-dotnetcore3beginner-3/4.png">
+<meta name="twitter:image" content="https://kevin8656.github.io/2019/10/03/20190930-dotnetcore3beginner-3/4.png">
 
 
 
@@ -146,7 +146,7 @@
 
 
 
-  <link rel="canonical" href="https://kevin8656.github.io/2019/09/30/20190930-dotnetcore3beginner-3/">
+  <link rel="canonical" href="https://kevin8656.github.io/2019/10/03/20190930-dotnetcore3beginner-3/">
 
 
 
@@ -321,7 +321,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://kevin8656.github.io/2019/09/30/20190930-dotnetcore3beginner-3/">
+    <link itemprop="mainEntityOfPage" href="https://kevin8656.github.io/2019/10/03/20190930-dotnetcore3beginner-3/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="KevinHuang">
@@ -350,8 +350,8 @@
               
                 <span class="post-meta-item-text">發表於</span>
               
-              <time title="創建於" itemprop="dateCreated datePublished" datetime="2019-09-30T20:32:25+08:00">
-                2019-09-30
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2019-10-03T01:02:33+08:00">
+                2019-10-03
               </time>
             
 
@@ -391,8 +391,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/09/30/20190930-dotnetcore3beginner-3/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/09/30/20190930-dotnetcore3beginner-3/" itemprop="commentCount"></span>
+                <a href="/2019/10/03/20190930-dotnetcore3beginner-3/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/10/03/20190930-dotnetcore3beginner-3/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -400,7 +400,7 @@
 
           
           
-             <span id="/2019/09/30/20190930-dotnetcore3beginner-3/" class="leancloud_visitors" data-flag-title="【ASP.Net Core 3.0應用程式開發-3】什麼是MVC？什麼是前後端分離？ ft.安裝EF Core 3.0、初始化資料模型對應">
+             <span id="/2019/10/03/20190930-dotnetcore3beginner-3/" class="leancloud_visitors" data-flag-title="【ASP.Net Core 3.0應用程式開發-3】什麼是MVC？什麼是前後端分離？ ft.安裝EF Core 3.0、初始化資料模型對應">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -969,8 +969,8 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'https://kevin8656.github.io/2019/09/30/20190930-dotnetcore3beginner-3/';
-          this.page.identifier = '2019/09/30/20190930-dotnetcore3beginner-3/';
+          this.page.url = 'https://kevin8656.github.io/2019/10/03/20190930-dotnetcore3beginner-3/';
+          this.page.identifier = '2019/10/03/20190930-dotnetcore3beginner-3/';
           this.page.title = '【ASP.Net Core 3.0應用程式開發-3】什麼是MVC？什麼是前後端分離？ ft.安裝EF Core 3.0、初始化資料模型對應';
         };
         var d = document, s = d.createElement('script');
