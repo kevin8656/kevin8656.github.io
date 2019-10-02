@@ -298,6 +298,176 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://kevin8656.github.io/2019/09/30/20190930-dotnetcore3beginner-3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="KevinHuang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="https://i.imgur.com/hvEFjsH.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="凱文寫程式 | •́ ▾ •̀ |">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/09/30/20190930-dotnetcore3beginner-3/" itemprop="url">【ASP.Net Core 3.0應用程式開發-3】什麼是MVC？什麼是前後端分離？ ft.安裝EF Core 3.0、初始化資料模型對應</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2019-09-30T20:32:25+08:00">
+                2019-09-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分類於</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ASP-Net-Core/" itemprop="url" rel="index">
+                    <span itemprop="name">ASP.Net Core</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/09/30/20190930-dotnetcore3beginner-3/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/09/30/20190930-dotnetcore3beginner-3/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2019/09/30/20190930-dotnetcore3beginner-3/" class="leancloud_visitors" data-flag-title="【ASP.Net Core 3.0應用程式開發-3】什麼是MVC？什麼是前後端分離？ ft.安裝EF Core 3.0、初始化資料模型對應">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">閱讀次數&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>接續上一篇我們建立完資料庫及資料表，這一篇會帶大家了解MVC程式架構的基本概念，以及什麼是前後端分離，最後在實作的部分會帶大家在上次建立的API專案中安裝Entity Framework Core 3.0（EF Core 3.0），並在專案中透過EF Core建立Model，該Model會對應到資料庫的資料表結構。</p>
+<blockquote>
+<p>這一系列的文章比較偏向讓大家看完能夠有一些比較基本的觀念，並且會附加比較多的實作教學，因此可能解釋一些觀念的時候，不會用太精細的方式來與大家做探討，請大家多多見諒！主要想讓大家對觀念的理解可以剛好輔助實作就好，如果對觀念有更深的興趣歡迎尋找更多文章，或者看我文中提到的更深入的文章，也可以在下方回應與大家分享自己看到的資訊哦～！</p>
+</blockquote>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/09/30/20190930-dotnetcore3beginner-3/" rel="contents">
+              閱讀全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://kevin8656.github.io/2019/09/29/20190929-dotnetcore3beginner-2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -413,7 +583,7 @@
         
           <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>接續上一篇API的專案建立教學，這一篇會帶大家使用SQL Server建立資料庫與資料表，為我們下一篇的EF Core 3.0資料對應做準備。</p>
 <blockquote>
-<p>這一系列的文章比較偏向讓大家看完能夠有一些比較基本的觀念，並且會附加比較多的實作教學，因此可能解釋一些觀念的時候，不會用太精細的方式來與大家做探討，請大家多多見諒！主要想讓大家對觀念的理解可以剛好輔助實作就好，如果對觀念有更深的興趣歡迎尋找更多文章，或這看我文中提到的更深入的文章，也可以在下方回應與大家分享自己看到的資訊哦～！</p>
+<p>這一系列的文章比較偏向讓大家看完能夠有一些比較基本的觀念，並且會附加比較多的實作教學，因此可能解釋一些觀念的時候，不會用太精細的方式來與大家做探討，請大家多多見諒！主要想讓大家對觀念的理解可以剛好輔助實作就好，如果對觀念有更深的興趣歡迎尋找更多文章，或者看我文中提到的更深入的文章，也可以在下方回應與大家分享自己看到的資訊哦～！</p>
 </blockquote>
           <!--noindex-->
           <div class="post-button text-center">
@@ -584,7 +754,7 @@
           <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>以前剛開始寫程式的時候，第一個接觸到的程式語言就是C#，使用的框架則是ASP.Net Framework，當時整天抱著一本C# MVC的書每天K，K到最後都有點昏頭了。而最近剛好開始有機會分享自己所學，因此想要從頭開始整理一下自己在.Net學習的過程，並且將這些歷程中的重點分享給身邊想學的人。</p>
 <p>這幾年來除了.Net Framework，很多人也開始使用微軟另一個開發框架.Net Core，而這兩種開發框架之間到底有什麼不同呢？讓我們一起看下去吧！</p>
 <blockquote>
-<p>這一系列的文章比較偏向讓大家看完能夠有一些比較基本的觀念，並且會附加比較多的實作教學，因此可能解釋一些觀念的時候，不會用太精細的方式來與大家做探討，請大家多多見諒！主要想讓大家對觀念的理解可以剛好輔助實作就好，如果對觀念有更深的興趣歡迎尋找更多文章，或這看我文中提到的更深入的文章，也可以在下方回應與大家分享自己看到的資訊哦～！</p>
+<p>這一系列的文章比較偏向讓大家看完能夠有一些比較基本的觀念，並且會附加比較多的實作教學，因此可能解釋一些觀念的時候，不會用太精細的方式來與大家做探討，請大家多多見諒！主要想讓大家對觀念的理解可以剛好輔助實作就好，如果對觀念有更深的興趣歡迎尋找更多文章，或者看我文中提到的更深入的文章，也可以在下方回應與大家分享自己看到的資訊哦～！</p>
 </blockquote>
           <!--noindex-->
           <div class="post-button text-center">
@@ -961,177 +1131,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://kevin8656.github.io/2019/07/28/20190728-CommitizenUsage/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="KevinHuang">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="https://i.imgur.com/hvEFjsH.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="凱文寫程式 | •́ ▾ •̀ |">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/07/28/20190728-CommitizenUsage/" itemprop="url">【Git學習筆記】Git Commit Log 最佳實踐</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">發表於</span>
-              
-              <time title="創建於" itemprop="dateCreated datePublished" datetime="2019-07-28T20:58:37+08:00">
-                2019-07-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分類於</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Git/" itemprop="url" rel="index">
-                    <span itemprop="name">Git</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/07/28/20190728-CommitizenUsage/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/07/28/20190728-CommitizenUsage/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2019/07/28/20190728-CommitizenUsage/" class="leancloud_visitors" data-flag-title="【Git學習筆記】Git Commit Log 最佳實踐">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">閱讀次數&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在實作專案過程中時常會需要使用版本控制，而目前我都是使用Git來作為我的版控環境。</p>
-<p>最近剛好在公司的一堂CI/CD課程下課後，與講師聊到了git flow的管理，以及一些使用Git的小技巧，</p>
-<p>無意聽說了“最佳實踐”這個名詞，據說是從AngularJS的規範出來的，這部分我還沒有詳細研究。</p>
-<p>而在Git的Commit Log也可以做“最佳實踐”，關於最佳實踐的觀念，有興趣的朋友可以<a href="https://docs.google.com/document/d/1QrDFcIiPjSLDn3EL15IJygNPiHORgU1_OOAqWjiDU5Y/edit#heading=h.uyo6cb12dt6w" target="_blank" rel="noopener">看這裡</a></p>
-<p>而講師介紹給了我若想要快速地做到Commit Log的最佳實踐，可以使用<strong>Commitizen</strong>這個套件比較方便快速上手。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/07/28/20190728-CommitizenUsage/" rel="contents">
-              閱讀全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1184,7 +1183,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">文章</span>
                 </a>
               </div>
@@ -1206,7 +1205,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">41</span>
+                  <span class="site-state-item-count">42</span>
                   <span class="site-state-item-name">標籤</span>
                 </a>
               </div>
