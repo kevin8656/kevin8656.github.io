@@ -2,7 +2,7 @@
 title: 【ASP.Net Core 3.0應用程式開發-1】什麼是.Net Core? ft.基礎API專案建立
 date: 2019-09-28 19:13:43
 categories: [ASP.Net Core]
-tags: [DotNetCore,ASP.Net Core 3.0,C#,VisualStudio,MVC,WebAPI]
+tags: [DotNetCore,ASP.Net Core 3.0,C#,Visual Studio,MVC,WebAPI]
 ---
 
 ## 前言
@@ -10,6 +10,8 @@ tags: [DotNetCore,ASP.Net Core 3.0,C#,VisualStudio,MVC,WebAPI]
 以前剛開始寫程式的時候，第一個接觸到的程式語言就是C#，使用的框架則是ASP.Net Framework，當時整天抱著一本C# MVC的書每天K，K到最後都有點昏頭了。而最近剛好開始有機會分享自己所學，因此想要從頭開始整理一下自己在.Net學習的過程，並且將這些歷程中的重點分享給身邊想學的人。
 
 這幾年來除了.Net Framework，很多人也開始使用微軟另一個開發框架.Net Core，而這兩種開發框架之間到底有什麼不同呢？讓我們一起看下去吧！
+
+> 這一系列的文章比較偏向讓大家看完能夠有一些比較基本的觀念，並且會附加比較多的實作教學，因此可能解釋一些觀念的時候，不會用太精細的方式來與大家做探討，請大家多多見諒！主要想讓大家對觀念的理解可以剛好輔助實作就好，如果對觀念有更深的興趣歡迎尋找更多文章，或者看我文中提到的更深入的文章，也可以在下方回應與大家分享自己看到的資訊哦～！
 
 <!--more-->
 
