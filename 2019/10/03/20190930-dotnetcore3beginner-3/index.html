@@ -107,12 +107,11 @@
 <meta property="og:image" content="https://kevin8656.github.io/2019/10/03/20190930-dotnetcore3beginner-3/17.png">
 <meta property="og:image" content="https://kevin8656.github.io/2019/10/03/20190930-dotnetcore3beginner-3/14.png">
 <meta property="og:image" content="https://kevin8656.github.io/2019/10/03/20190930-dotnetcore3beginner-3/15.png">
-<meta property="og:image" content="https://kevin8656.github.io/2019/10/03/20190930-dotnetcore3beginner-3/16.png">
 <meta property="og:image" content="https://kevin8656.github.io/2019/10/03/20190930-dotnetcore3beginner-3/18.png">
 <meta property="og:image" content="https://kevin8656.github.io/2019/10/03/20190930-dotnetcore3beginner-3/19.png">
 <meta property="og:image" content="https://kevin8656.github.io/2019/10/03/20190930-dotnetcore3beginner-3/20.png">
 <meta property="og:image" content="https://kevin8656.github.io/2019/10/03/20190930-dotnetcore3beginner-3/21.png">
-<meta property="og:updated_time" content="2019-10-02T17:21:53.449Z">
+<meta property="og:updated_time" content="2019-10-02T17:23:56.855Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【ASP.Net Core 3.0應用程式開發-3】什麼是MVC？什麼是前後端分離？ ft.安裝EF Core 3.0、初始化資料模型對應">
 <meta name="twitter:description" content="前言接續上一篇我們建立完資料庫及資料表，這一篇會帶大家了解MVC程式架構的基本概念，以及什麼是前後端分離，最後在實作的部分會帶大家在上次建立的API專案中安裝Entity Framework Core 3.0（EF Core 3.0），並在專案中透過EF Core建立Model，該Model會對應到資料庫的資料表結構。  這一系列的文章比較偏向讓大家看完能夠有一些比較基本的觀念，並且會附加比較多的">
@@ -526,10 +525,6 @@
 </ol>
 <p><img src="15.png" alt="15"></p>
 <ol start="3">
-<li>下指令安裝成功後會看到以下畫面，點右上「ｘ」關閉並重新打開此套件管理主控台的命令視窗</li>
-</ol>
-<p><img src="16.png" alt="16"></p>
-<ol start="4">
 <li>接下來輸入以下指令，建立實體的資料對應模型，對應到先前建立的資料庫與資料表：</li>
 </ol>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Scaffold-DbContext "Data Source=localhost;user id=dotnetcore;password=dotnetcore; persist security info=True; Initial Catalog=dotnetcore;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models -Force</span><br></pre></td></tr></table></figure>
@@ -551,7 +546,7 @@
 <li>完成後就會看到右邊的檔案目錄多了「Models」資料夾，並且裡面多出了「dotnetcoreContext.cs」以及「Member.cs」</li>
 </ol>
 <p><img src="19.png" alt="19"></p>
-<ol start="6">
+<ol start="4">
 <li>以下解釋一下剛剛自動對應產生的兩個檔案分別的功能：</li>
 </ol>
 <ul>
