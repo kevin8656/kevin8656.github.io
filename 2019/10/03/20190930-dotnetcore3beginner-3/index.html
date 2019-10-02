@@ -112,7 +112,7 @@
 <meta property="og:image" content="https://kevin8656.github.io/2019/10/03/20190930-dotnetcore3beginner-3/19.png">
 <meta property="og:image" content="https://kevin8656.github.io/2019/10/03/20190930-dotnetcore3beginner-3/20.png">
 <meta property="og:image" content="https://kevin8656.github.io/2019/10/03/20190930-dotnetcore3beginner-3/21.png">
-<meta property="og:updated_time" content="2019-10-02T17:02:55.272Z">
+<meta property="og:updated_time" content="2019-10-02T17:07:03.262Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【ASP.Net Core 3.0應用程式開發-3】什麼是MVC？什麼是前後端分離？ ft.安裝EF Core 3.0、初始化資料模型對應">
 <meta name="twitter:description" content="前言接續上一篇我們建立完資料庫及資料表，這一篇會帶大家了解MVC程式架構的基本概念，以及什麼是前後端分離，最後在實作的部分會帶大家在上次建立的API專案中安裝Entity Framework Core 3.0（EF Core 3.0），並在專案中透過EF Core建立Model，該Model會對應到資料庫的資料表結構。  這一系列的文章比較偏向讓大家看完能夠有一些比較基本的觀念，並且會附加比較多的">
@@ -446,7 +446,7 @@
 </ul>
 <p><img src="4.png" alt="4"></p>
 <p>簡單來說就是以上這樣，如果想要對MVC了解更多的可以先參考這篇網路上我覺得寫得不錯的討論文章，以及文章下面更多的資源：<a href="http://blog.turn.tw/?p=1539" target="_blank" rel="noopener">MVC是一個巨大誤會</a></p>
-<h3 id="前後端分離"><a href="#前後端分離" class="headerlink" title="前後端分離"></a>前後端分離</h3><p>在上方的MVC架構中，我們有提到Controller在完成View的請求之後，會將資料傳到View上顯示，並且也有看到圖片中標示了「前端」與「後端」。而其實這邊的「View」指的就是前端的部分，在ASP.net 的MVC專案中，前端跟後端其實是無法「完全分開」的，如果你架設專案的伺服器壞了，是整個網站都一起會掛掉，簡單來說，前後端在這種MVC架構下其實是綁在一起的。</p>
+<h3 id="前後端分離"><a href="#前後端分離" class="headerlink" title="前後端分離"></a>前後端分離</h3><p>在上方的MVC架構中，Controller在完成View的請求之後，會將資料傳到View上顯示，並且也有看到圖片中標示了「前端」與「後端」。而其實這邊的「View」指的就是前端的部分，在ASP.net 的MVC專案中，前端跟後端其實是無法「完全分開」的，如果你架設專案的伺服器壞了，是整個網站都一起會掛掉，簡單來說，前後端在這種MVC架構下其實是綁在一起的。</p>
 <p>而前後端分離就如同他字面上的意思，將前端與後端完全分離，分成兩個部分，甚至是兩個專案來做。我們可以先看下面這張圖，當前端需要資料時，會發出請求給後端，後端去資料庫存取資料後，再把資料回傳到前端去。</p>
 <p><img src="3.png" alt="3"></p>
 <p>而如果用更簡單的方式來畫圖，就會變成下面這副德性</p>
@@ -459,7 +459,7 @@
 <li>「飲料機上的按鈕」：「API」</li>
 <li>「飲料機」給我「飲料」：「後端」回傳「資料」</li>
 </ul>
-<p>就是像這個樣子，而所謂後端的API專案，就跟我們在第一堂課提到的建立WEB API專案的那個API是同一個意思，因此我們在未來的實作中將會透過.Net Core來做API與後端的邏輯，然後前端的專案則是用另外的專案來實作，之後會帶大家識做後端的API專案，並且再教大家如何透過軟體（Postman）或者前端去對後端API發出請求，大家就會很明瞭上面所說的這些東西了！</p>
+<p>就是像這個樣子，而所謂後端的API專案，也就是我們在第一堂課建立的WEB API專案，因此我們在未來的實作中將會透過.Net Core來做API與後端的邏輯，然後前端的專案則是另外實作。之後帶大家做後端的API專案，並且再教大家如何透過軟體（Postman）或者前端去對後端API發出請求，大家就會很明瞭上面所說的這些觀念了！</p>
 <h3 id="什麼是Entity-Framework-Core-3-0（EF-Core-3-0）"><a href="#什麼是Entity-Framework-Core-3-0（EF-Core-3-0）" class="headerlink" title="什麼是Entity Framework Core 3.0（EF Core 3.0）"></a>什麼是Entity Framework Core 3.0（EF Core 3.0）</h3><p><img src="1.png" alt="1"></p>
 <p>Entity Framework Core是微軟新一代出的<strong><em>Object-Relational Mapping（ORM）</em></strong>框架，是以.Net Core實作出來的。主要適用於透過程式碼來處理Model以及資料庫結構對應的工作。</p>
 <p>.Net Core是從.Net Framework發展而來，而Entity Framework Core 3.0（EF Core 3.0）則是從Entity Framework發展而來的，算是進化版。給使用者呼叫的函式介面類似於Entity Framework，但是底層幾乎是砍掉重練的。</p>
@@ -467,7 +467,7 @@
 <p><strong><em>Object-Relational Mapping（ORM）</em></strong>：物件關係映射，在MVC架構中「Model」就是以ORM的方式運作的，主要作用就是在關聯式資料庫與實體的物件之間做一個對應，這樣我們就可以透過程式去操作物件，效果等同於我們去下SQL指令來對資料庫做操作，可以讓開發者在程式中以更簡易的方式對資料庫進行操作。</p>
 </blockquote>
 <p>這個套件大家就看一下概略的介紹，有興趣可以去查詢官方的介紹比較清楚，接下來我就帶大家來開始在專案中裝上這個套件啦！</p>
-<h2 id="開始實作"><a href="#開始實作" class="headerlink" title="開始實作"></a>開始實作</h2><h3 id="安裝EF-Core-3-0-0"><a href="#安裝EF-Core-3-0-0" class="headerlink" title="安裝EF Core 3.0.0"></a>安裝EF Core 3.0.0</h3><p>以下步驟將帶大家安裝兩個套件：「Microsoft.EntityFrameworkCore.SqlServer」及「Microsoft.EntityFrameworkCore.Tools」，以下步驟將以「Microsoft.EntityFrameworkCore.SqlServer」套件為例</p>
+<h2 id="開始實作"><a href="#開始實作" class="headerlink" title="開始實作"></a>開始實作</h2><h3 id="安裝EF-Core-3"><a href="#安裝EF-Core-3" class="headerlink" title="安裝EF Core 3"></a>安裝EF Core 3</h3><p>以下步驟將帶大家安裝兩個套件：「Microsoft.EntityFrameworkCore.SqlServer」及「Microsoft.EntityFrameworkCore.Tools」，以下步驟將以「Microsoft.EntityFrameworkCore.SqlServer」套件為例</p>
 <ol>
 <li>再次開啟在第一篇所建立的WebApi專案</li>
 </ol>
@@ -791,7 +791,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基本概念"><span class="nav-number">2.</span> <span class="nav-text">基本概念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#MVC概念"><span class="nav-number">2.1.</span> <span class="nav-text">MVC概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#前後端分離"><span class="nav-number">2.2.</span> <span class="nav-text">前後端分離</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#什麼是Entity-Framework-Core-3-0（EF-Core-3-0）"><span class="nav-number">2.3.</span> <span class="nav-text">什麼是Entity Framework Core 3.0（EF Core 3.0）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#開始實作"><span class="nav-number">3.</span> <span class="nav-text">開始實作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安裝EF-Core-3-0-0"><span class="nav-number">3.1.</span> <span class="nav-text">安裝EF Core 3.0.0</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#透過EF-Core-3建立模型對應"><span class="nav-number">3.2.</span> <span class="nav-text">透過EF Core 3建立模型對應</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基本概念"><span class="nav-number">2.</span> <span class="nav-text">基本概念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#MVC概念"><span class="nav-number">2.1.</span> <span class="nav-text">MVC概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#前後端分離"><span class="nav-number">2.2.</span> <span class="nav-text">前後端分離</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#什麼是Entity-Framework-Core-3-0（EF-Core-3-0）"><span class="nav-number">2.3.</span> <span class="nav-text">什麼是Entity Framework Core 3.0（EF Core 3.0）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#開始實作"><span class="nav-number">3.</span> <span class="nav-text">開始實作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安裝EF-Core-3"><span class="nav-number">3.1.</span> <span class="nav-text">安裝EF Core 3</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#透過EF-Core-3建立模型對應"><span class="nav-number">3.2.</span> <span class="nav-text">透過EF Core 3建立模型對應</span></a></li></ol></li></ol></div>
             
 
           </div>
