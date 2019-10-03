@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://kevin8656.github.io/"/>
-  <updated>2019-10-02T17:24:18.426Z</updated>
+  <updated>2019-10-03T05:30:14.119Z</updated>
   <id>https://kevin8656.github.io/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="https://kevin8656.github.io/2019/10/03/20190930-dotnetcore3beginner-3/"/>
     <id>https://kevin8656.github.io/2019/10/03/20190930-dotnetcore3beginner-3/</id>
     <published>2019-10-02T17:02:33.000Z</published>
-    <updated>2019-10-02T17:24:18.426Z</updated>
+    <updated>2019-10-03T05:30:14.119Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>接續上一篇我們建立完資料庫及資料表，這一篇會帶大家了解MVC程式架構的基本概念，以及什麼是前後端分離，最後在實作的部分會帶大家在上次建立的API專案中安裝Entity Framework Core 3.0（EF Core 3.0），並在專案中透過EF Core建立Model，該Model會對應到資料庫的資料表結構。</p><blockquote><p>這一系列的文章比較偏向讓大家看完能夠有一些比較基本的觀念，並且會附加比較多的實作教學，因此可能解釋一些觀念的時候，不會用太精細的方式來與大家做探討，請大家多多見諒！主要想讓大家對觀念的理解可以剛好輔助實作就好，如果對觀念有更深的興趣歡迎尋找更多文章，或者看我文中提到的更深入的文章，也可以在下方回應與大家分享自己看到的資訊哦～！</p></blockquote><a id="more"></a><h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><h3 id="MVC概念"><a href="#MVC概念" class="headerlink" title="MVC概念"></a>MVC概念</h3><p>MVC是一種軟體的架構模式，主要是把軟體系統的程式分成三層：模型（Model）、視圖（View）和控制器（Controller）。主要是Model &lt;-&gt; Controller &lt;-&gt; View這樣的方式在做程式溝通。而我自己在開發過程中還會再多一層，這一層會放在Model以及Controller之間，可以把它稱作業務邏輯（Service），所以最後會變成Model &lt;-&gt; Service &lt;-&gt; Controller &lt;-&gt; View層這樣子，以下簡單以實作面讓大家理解一下每一層的作用：</p><ul><li>視圖（View）：從Controller獲得資料，並且進行介面設計與渲染。</li><li>控制器（Controller）：做整體程式流程的控制，接收View的資料請求，並且呼叫Service來完成業務邏輯，最後將資料回傳到View進行顯示。</li><li>業務邏輯（Service）：負責業務邏輯的相關工作，會呼叫Model去撈取資料庫資料。</li><li>模型（Model）：與資料庫的資料表有對應關係，Service可以透過Model撈取資料庫中的資料。</li></ul><p><img src="4.png" alt="4"></p><p>簡單來說就是以上這樣，如果想要對MVC了解更多的可以先參考這篇網路上我覺得寫得不錯的討論文章，以及文章下面更多的資源：<a href="http://blog.turn.tw/?p=1539" target="_blank" rel="noopener">MVC是一個巨大誤會</a></p><h3 id="前後端分離"><a href="#前後端分離" class="headerlink" title="前後端分離"></a>前後端分離</h3><p>在上方的MVC架構中，Controller在完成View的請求之後，會將資料傳到View上顯示，並且也有看到圖片中標示了「前端」與「後端」。而其實這邊的「View」指的就是前端的部分，在ASP.net 的MVC專案中，前端跟後端其實是無法「完全分開」的，如果你架設專案的伺服器壞了，是整個網站都一起會掛掉，簡單來說，前後端在這種MVC架構下其實是綁在一起的。</p><p>而前後端分離就如同他字面上的意思，將前端與後端完全分離，分成兩個部分，甚至是兩個專案來做。我們可以先看下面這張圖，當前端需要資料時，會發出請求給後端，後端去資料庫存取資料後，再把資料回傳到前端去。</p><p><img src="3.png" alt="3"></p><p>而如果用更簡單的方式來畫圖，就會變成下面這副德性</p><p><img src="2.png" alt="2"></p><p>而前後端分離就是在前端跟後端這個請求跟回傳的部分，不是透過在專案內連結的互傳，而是透過一個叫「API」的東西來進行交互。</p><p>而API是什麼東西呢？API的全稱叫做「應用程式介面 (Application Programming Interface)」，我會比較喜歡叫他“應用程式接口”，當兩個不同專案需要進行交互的時候，通常就會透過API來進行溝通，前端專案透過呼叫後端專案所開放出來的API，來存取後端專案的資源。</p><p>我用個飲料機的例子舉例，我今天想要喝一杯飲料，所以我（前端）透過去點擊飲料機上的按鈕（API）來叫飲料機給我飲料（後端）：</p><ul><li>「我」想要一瓶「飲料」：「前端」發出「需求」</li><li>「飲料機上的按鈕」：「API」</li><li>「飲料機」給我「飲料」：「後端」回傳「資料」</li></ul><p>就是像這個樣子，而所謂後端的API專案，也就是我們在第一堂課建立的WEB API專案，因此我們在未來的實作中將會透過.Net Core來做API與後端的邏輯，然後前端的專案則是另外實作。之後帶大家做後端的API專案，並且再教大家如何透過軟體（Postman）或者前端去對後端API發出請求，大家就會很明瞭上面所說的這些觀念了！</p><h3 id="什麼是Entity-Framework-Core-3-0（EF-Core-3-0）"><a href="#什麼是Entity-Framework-Core-3-0（EF-Core-3-0）" class="headerlink" title="什麼是Entity Framework Core 3.0（EF Core 3.0）"></a>什麼是Entity Framework Core 3.0（EF Core 3.0）</h3><p><img src="1.png" alt="1"></p><p>Entity Framework Core是微軟新一代出的<strong><em>Object-Relational Mapping（ORM）</em></strong>框架，是以.Net Core實作出來的。主要適用於透過程式碼來處理Model以及資料庫結構對應的工作。</p><p>.Net Core是從.Net Framework發展而來，而Entity Framework Core 3.0（EF Core 3.0）則是從Entity Framework發展而來的，算是進化版。給使用者呼叫的函式介面類似於Entity Framework，但是底層幾乎是砍掉重練的。</p><blockquote><p><strong><em>Object-Relational Mapping（ORM）</em></strong>：物件關係映射，在MVC架構中「Model」就是以ORM的方式運作的，主要作用就是在關聯式資料庫與實體的物件之間做一個對應，這樣我們就可以透過程式去操作物件，效果等同於我們去下SQL指令來對資料庫做操作，可以讓開發者在程式中以更簡易的方式對資料庫進行操作。</p></blockquote><p>這個套件大家就看一下概略的介紹，有興趣可以去查詢官方的介紹比較清楚，接下來我就帶大家來開始在專案中裝上這個套件啦！</p><h2 id="開始實作"><a href="#開始實作" class="headerlink" title="開始實作"></a>開始實作</h2><h3 id="安裝EF-Core-3"><a href="#安裝EF-Core-3" class="headerlink" title="安裝EF Core 3"></a>安裝EF Core 3</h3><p>以下步驟將帶大家安裝兩個套件：</p><ul><li>「Microsoft.EntityFrameworkCore.SqlServer」</li><li>「Microsoft.EntityFrameworkCore.Tools」</li></ul><p>以下步驟將以「Microsoft.EntityFrameworkCore.SqlServer」套件為例</p><ol><li>再次開啟在第一篇所建立的WebApi專案</li></ol><p><img src="5.png" alt="5"></p><ol start="2"><li>接下來選上面的「工具 -&gt; NuGet套件管理員 -&gt; 管理方案的NuGet套件」，開啟圖形化的NuGet套件安裝管理員（上方的「套件管理主控台」則是指令輸入畫面，可以使用指令安裝套件）</li></ol><blockquote><p>NuGet：是Microsoft 支援的共用程式碼機制，它定義了如何建立、裝載和取用.NET中的「套件」。</p></blockquote><p><img src="6.png" alt="6"></p><ol start="3"><li>看到NuGet的圖形化管理介面之後，點擊「瀏覽」分頁，並且輸入「Microsoft.EntityFrameworkCore.SqlServer」，找到該套件之後點擊它，右邊會顯示此套件的資訊</li></ol><p><img src="7.png" alt="7"></p><ol start="4"><li>在右邊視窗勾選要安裝此套件的專案，並且點選「安裝」</li></ol><p><img src="8.png" alt="8"></p><ol start="5"><li>等待套件安裝完成</li></ol><p><img src="9.png" alt="9"></p><ol start="6"><li>會出現以下提示，勾選「不要再顯示這個訊息」，並點擊「確定」</li></ol><p><img src="10.png" alt="10"></p><ol start="7"><li>出現「接受授權」的提示，點擊「我接受」</li></ol><p><img src="11.png" alt="11"></p><ol start="8"><li>安裝完成後，套件管理的右邊視窗就會顯示現在安裝的版本，確認一下是不是EF Core 「3.0.0」版本</li></ol><p><img src="12.png" alt="12"></p><ol start="9"><li>而在右邊「方案總管」視窗也可以看到，在「相依性-&gt;套件」的資料夾中也有寫已安裝的套件有哪些</li></ol><p><img src="13.png" alt="13"></p><ol start="10"><li>以相同的步驟再安裝「Microsoft.EntityFrameworkCore.Tools」套件</li></ol><p><img src="17.png" alt="17"></p><h3 id="透過EF-Core-3建立模型對應"><a href="#透過EF-Core-3建立模型對應" class="headerlink" title="透過EF Core 3建立模型對應"></a>透過EF Core 3建立模型對應</h3><p>我們可以透過EF Core套件，幫我們自動在程式中建立資料模型，對應到我們第二堂課所建立的資料庫資料表，而接下來就要帶大家了解一下怎麼做到這件事。</p><ol><li>首先點擊上方「工具」，找到「NuGet套件管理員」並選擇「套件管理主控台」，準備用下指令的方式對應資料庫</li></ol><p><img src="14.png" alt="14"></p><ol start="2"><li>開啟後可以在下方的視窗看到如下畫面，底下「PM&gt;」就是要輸入指令的位置</li></ol><p><img src="15.png" alt="15"></p><ol start="3"><li>接下來輸入以下指令，建立實體的資料對應模型，對應到先前建立的資料庫與資料表：</li></ol><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Scaffold-DbContext "Data Source=localhost;user id=dotnetcore;password=dotnetcore; persist security info=True; Initial Catalog=dotnetcore;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models -Force</span><br></pre></td></tr></table></figure><p><img src="18.png" alt="18"></p><p>指令的解釋如下，不知道的人可以看，或者直接去<a href="https://docs.microsoft.com/zh-tw/ef/core/miscellaneous/cli/powershell" target="_blank" rel="noopener">官方文件</a>看一下</p><ul><li>Scaffold-DbContext：EFCore中產生資料實體模型的指令</li><li>Data Source：資料庫的來源，這邊是輸入本機IP，把專案架上伺服器時會需要修改</li><li>user id：資料庫登入角色的名稱</li><li>password：資料庫登入角色的密碼</li><li>persist security info：宣告為 True 時，代表當SQL連線已經建立，也會將密碼儲存在記憶體中，供後續程式引用</li><li>Initial Catalog：就是要對應的資料庫</li><li>Microsoft.EntityFrameworkCore.SqlServer：指定套件去進行動作</li><li>-OutputDir：將檔案放入目錄。 路徑是相對於專案目錄，這邊要把建立出的實體資料模型放入「Models」資料夾中</li><li>-Force：覆寫現有的檔案。</li></ul><ol start="4"><li>完成後就會看到右邊的檔案目錄多了「Models」資料夾，並且裡面多出了「dotnetcoreContext.cs」以及「Member.cs」</li></ol><p><img src="19.png" alt="19"></p><ol start="5"><li>以下解釋一下剛剛自動對應產生的兩個檔案分別的功能：</li></ol><ul><li><p>dotnetcoreContext.cs：此檔案其實是資料庫名稱+Context組成的檔名，裡面會放資料庫連線的資訊以及模組對應的資訊，該檔案是透過EFCore套件自動產生，因此初期不會修改到</p><p><img src="20.png" alt="20"></p></li><li><p>Member.cs：此檔案是資料庫中資料表的模型，裡面的資料欄位跟型態會對應到資料庫的資料型態。</p><p><img src="21.png" alt="21"></p></li></ul><p>看到以上畫面就代表你成功安裝了EF Core 3.0套件，並且也透過指令將資料庫與資料表對應到程式碼中，未來如果資料庫結構有更新時，只要打開「NuGet套件管理器主控台」，再次輸入以下指令即可重新對應並覆蓋程式碼囉：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Scaffold-DbContext "Data Source=localhost;user id=dotnetcore;password=dotnetcore; persist security info=True; Initial Catalog=dotnetcore;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models -Force</span><br></pre></td></tr></table></figure><hr><p>下一篇將帶大家建立MVC + Service的程式架構，並且寫一個簡單的會員子系統操作給大家當做示範。</p>]]></content>
+    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>接續上一篇我們建立完資料庫及資料表，這一篇會帶大家了解MVC程式架構的基本概念，以及什麼是前後端分離，最後在實作的部分會帶大家在上次建立的API專案中安裝Entity Framework Core 3.0（EF Core 3.0），並在專案中透過EF Core建立Model，該Model會對應到資料庫的資料表結構。</p><blockquote><p>這一系列的文章比較偏向讓大家看完能夠有一些比較基本的觀念，並且會附加比較多的實作教學，因此可能解釋一些觀念的時候，不會用太精細的方式來與大家做探討，請大家多多見諒！主要想讓大家對觀念的理解可以剛好輔助實作就好，如果對觀念有更深的興趣歡迎尋找更多文章，或者看我文中提到的更深入的文章，也可以在下方回應與大家分享自己看到的資訊哦～！</p></blockquote><a id="more"></a><h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><h3 id="MVC概念"><a href="#MVC概念" class="headerlink" title="MVC概念"></a>MVC概念</h3><p>MVC是一種軟體的架構模式，主要是把軟體系統的程式分成三層：模型（Model）、視圖（View）和控制器（Controller）。主要是Model &lt;-&gt; Controller &lt;-&gt; View這樣的方式在做程式溝通。而我自己在開發過程中還會再多一層，這一層會放在Model以及Controller之間，可以把它稱作業務邏輯（Service），所以最後會變成Model &lt;-&gt; Service &lt;-&gt; Controller &lt;-&gt; View層這樣子，以下簡單以實作面讓大家理解一下每一層的作用：</p><ul><li>視圖（View）：從Controller獲得資料，並且進行介面設計與渲染。</li><li>控制器（Controller）：做整體程式流程的控制，接收View的資料請求，並且呼叫Service來完成業務邏輯，最後將資料回傳到View進行顯示。</li><li>業務邏輯（Service）：負責業務邏輯的相關工作，會呼叫Model去撈取資料庫資料。</li><li>模型（Model）：與資料庫的資料表有對應關係，Service可以透過Model撈取資料庫中的資料。</li></ul><p><img src="4.png" alt="4"></p><p>簡單來說就是以上這樣，如果想要對MVC了解更多的可以先參考這篇網路上我覺得寫得不錯的討論文章，以及文章下面更多的資源：<a href="http://blog.turn.tw/?p=1539" target="_blank" rel="noopener">MVC是一個巨大誤會</a></p><h3 id="前後端分離"><a href="#前後端分離" class="headerlink" title="前後端分離"></a>前後端分離</h3><p>在上方的MVC架構中，Controller在完成View的請求之後，會將資料傳到View上顯示，並且也有看到圖片中標示了「前端」與「後端」。而其實這邊的「View」指的就是前端的部分，在ASP.net 的MVC專案中，前端跟後端其實是無法「完全分開」的，如果你架設專案的伺服器壞了，是整個網站都一起會掛掉，簡單來說，前後端在這種MVC架構下其實是綁在一起的。</p><p>而前後端分離就如同他字面上的意思，將前端與後端完全分離，分成兩個部分，甚至是兩個專案來做。我們可以先看下面這張圖，當前端需要資料時，會發出請求給後端，後端去資料庫存取資料後，再把資料回傳到前端去。</p><p><img src="3.png" alt="3"></p><p>而如果用更簡單的方式來畫圖，就會變成下面這副德性</p><p><img src="2.png" alt="2"></p><p>而前後端分離就是在前端跟後端這個請求跟回傳的部分，不是透過在專案內連結的互傳，而是透過一個叫「API」的東西來進行交互。</p><p>而API是什麼東西呢？API的全稱叫做「應用程式介面 (Application Programming Interface)」，我會比較喜歡叫他“應用程式接口”，當兩個不同專案需要進行交互的時候，通常就會透過API來進行溝通，前端專案透過呼叫後端專案所開放出來的API，來存取後端專案的資源。</p><p>我用個飲料機的例子舉例，我今天想要喝一杯飲料，所以我（前端）透過去點擊飲料機上的按鈕（API）來叫飲料機給我飲料（後端）：</p><ul><li>「我」想要一瓶「飲料」：「前端」發出「需求」</li><li>「飲料機上的按鈕」：「API」</li><li>「飲料機」給我「飲料」：「後端」回傳「資料」</li></ul><p>就是像這個樣子，而所謂後端的API專案，也就是我們在第一堂課建立的WEB API專案，因此我們在未來的實作中將會透過.Net Core來做API與後端的邏輯，然後前端的專案則是另外實作。之後帶大家做後端的API專案，並且再教大家如何透過軟體（Postman）或者前端去對後端API發出請求，大家就會很明瞭上面所說的這些觀念了！</p><h3 id="什麼是Entity-Framework-Core-3-0（EF-Core-3-0）"><a href="#什麼是Entity-Framework-Core-3-0（EF-Core-3-0）" class="headerlink" title="什麼是Entity Framework Core 3.0（EF Core 3.0）"></a>什麼是Entity Framework Core 3.0（EF Core 3.0）</h3><p><img src="1.png" alt="1"></p><p>Entity Framework Core是微軟新一代出的<strong><em>Object-Relational Mapping（ORM）</em></strong>框架，是以.Net Core實作出來的。主要適用於透過程式碼來處理Model以及資料庫結構對應的工作。</p><p>.Net Core是從.Net Framework發展而來，而Entity Framework Core 3.0（EF Core 3.0）則是從Entity Framework發展而來的，算是進化版。給使用者呼叫的函式介面類似於Entity Framework，但是底層幾乎是砍掉重練的。</p><blockquote><p><strong><em>Object-Relational Mapping（ORM）</em></strong>：物件關係映射，在MVC架構中「Model」就是以ORM的方式運作的，主要作用就是在關聯式資料庫與實體的物件之間做一個對應，這樣我們就可以透過程式去操作物件，效果等同於我們去下SQL指令來對資料庫做操作，可以讓開發者在程式中以更簡易的方式對資料庫進行操作。</p></blockquote><p>這個套件大家就看一下概略的介紹，有興趣可以去查詢官方的介紹比較清楚，接下來我就帶大家來開始在專案中裝上這個套件啦！</p><h2 id="開始實作"><a href="#開始實作" class="headerlink" title="開始實作"></a>開始實作</h2><h3 id="安裝EF-Core-3"><a href="#安裝EF-Core-3" class="headerlink" title="安裝EF Core 3"></a>安裝EF Core 3</h3><p>以下步驟將帶大家安裝兩個套件：</p><ul><li>「Microsoft.EntityFrameworkCore.SqlServer」</li><li>「Microsoft.EntityFrameworkCore.Tools」</li></ul><p>以下步驟將以「Microsoft.EntityFrameworkCore.SqlServer」套件為例</p><ol><li>再次開啟在第一篇所建立的WebApi專案</li></ol><p><img src="5.png" alt="5"></p><ol start="2"><li>因為.Net Core算是跨平台的專案，因此我會比較多讓大家使用指令模式來進行操作。接下來選上面的「工具 -&gt; NuGet套件管理員 -&gt; 套件管理器主控台」，開啟指令的NuGet套件安裝管理員（下方的「管理方案的NuGet套件」則是圖形化介面，可以比較方便管理套件）</li></ol><blockquote><p>NuGet：是Microsoft 支援的共用程式碼機制，它定義了如何建立、裝載和取用.NET中的「套件」。</p></blockquote><p><img src="6.png" alt="6"></p><ol start="3"><li>開啟後可以在下方的視窗看到如下畫面，底下「PM&gt;」就是要輸入指令的位置</li></ol><p><img src="15.png" alt="15"></p><ol start="4"><li><p>接下來輸入以下NuGet的指令，安裝</p><p>「Microsoft.EntityFrameworkCore.SqlServer」套件</p></li></ol><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PM&gt; Install-Package Microsoft.EntityFrameworkCore.SqlServer -Version 3.0.0</span><br></pre></td></tr></table></figure><p><img src="7.png" alt="7"></p><blockquote><p>要注意，網路上查到有些指令是使用<code>dotnet add package</code>指令來安裝的，該指令是要用作業系統本身的命令列工具（如Windows 的命令提示字元）去安裝的，在NuGet視窗中輸入此指令會不能成功執行唷～！</p></blockquote><ol start="5"><li>等待安裝過程跑完之後，可以點開右邊「方案總管」中的「相依性-&gt;套件」，就可以看到剛剛安裝的「Microsoft.EntityFrameworkCore.SqlServer」套件了</li></ol><p><img src="8.png" alt="8"></p><ol start="6"><li>接下來以同樣步驟安裝「Microsoft.EntityFrameworkCore.Tools」，請輸入以下指令：</li></ol><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PM&gt; Install-Package Microsoft.EntityFrameworkCore.Tools -Version 3.0.0</span><br></pre></td></tr></table></figure><p><img src="9.png" alt="9"></p><ol start="7"><li>右邊「方案總管」中的「相依性-&gt;套件」就會有兩個套件安裝了</li></ol><p><img src="10.png" alt="10"></p><h3 id="透過EF-Core-3建立模型對應"><a href="#透過EF-Core-3建立模型對應" class="headerlink" title="透過EF Core 3建立模型對應"></a>透過EF Core 3建立模型對應</h3><p>我們可以透過EF Core套件，幫我們自動在程式中建立資料模型，對應到我們第二堂課所建立的資料庫資料表，而接下來就要帶大家了解一下怎麼做到這件事。</p><ol><li>首先點擊上方「工具」，找到「NuGet套件管理員」並選擇「套件管理主控台」，準備用下指令的方式對應資料庫</li></ol><p><img src="14.png" alt="14"></p><ol start="2"><li>接下來輸入以下套件的指令，建立實體的資料對應模型，對應到先前建立的資料庫與資料表：</li></ol><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PM&gt; Scaffold-DbContext <span class="string">"Data Source=localhost;user id=dotnetcore;password=dotnetcore; persist security info=True; Initial Catalog=dotnetcore;"</span> Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models -Force</span><br></pre></td></tr></table></figure><p><img src="18.png" alt="18"></p><p>指令的解釋如下，不知道的人可以看，或者直接去<a href="https://docs.microsoft.com/zh-tw/ef/core/miscellaneous/cli/powershell" target="_blank" rel="noopener">官方文件</a>看一下</p><ul><li>Scaffold-DbContext：「EFCore Tools」套件中用來產生資料實體模型的指令</li><li>Data Source：資料庫的來源，這邊是輸入本機IP，把專案架上伺服器時會需要修改</li><li>user id：資料庫登入角色的名稱</li><li>password：資料庫登入角色的密碼</li><li>persist security info：宣告為 True 時，代表當SQL連線已經建立，也會將密碼儲存在記憶體中，供後續程式引用</li><li>Initial Catalog：就是要對應的資料庫</li><li>Microsoft.EntityFrameworkCore.SqlServer：指定套件去進行動作</li><li>-OutputDir：將檔案放入目錄。 路徑是相對於專案目錄，這邊要把建立出的實體資料模型放入「Models」資料夾中</li><li>-Force：覆寫現有的檔案。</li></ul><ol start="3"><li>完成後就會看到右邊的檔案目錄多了「Models」資料夾，並且裡面多出了「dotnetcoreContext.cs」以及「Member.cs」</li></ol><p><img src="19.png" alt="19"></p><ol start="4"><li>以下解釋一下剛剛自動對應產生的兩個檔案分別的功能：</li></ol><ul><li><p>dotnetcoreContext.cs：此檔案其實是資料庫名稱+Context組成的檔名，裡面會放資料庫連線的資訊以及模組對應的資訊，該檔案是透過EFCore套件自動產生，因此初期不會修改到</p><p><img src="20.png" alt="20"></p></li><li><p>Member.cs：此檔案是資料庫中資料表的模型，裡面的資料欄位跟型態會對應到資料庫的資料型態。</p><p><img src="21.png" alt="21"></p></li></ul><p>看到以上畫面就代表你成功安裝了EF Core 3.0套件，並且也透過指令將資料庫與資料表對應到程式碼中，未來如果資料庫結構有更新時，只要打開「NuGet套件管理器主控台」，再次輸入以下指令即可重新對應並覆蓋程式碼囉：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PM&gt; Scaffold-DbContext <span class="string">"Data Source=localhost;user id=dotnetcore;password=dotnetcore; persist security info=True; Initial Catalog=dotnetcore;"</span> Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models -Force</span><br></pre></td></tr></table></figure><hr><p>下一篇將帶大家建立MVC + Service的程式架構，並且寫一個簡單的會員子系統操作給大家當做示範。</p>]]></content>
     
     <summary type="html">
     
@@ -39,17 +39,17 @@
     
       <category term="DotNetCore" scheme="https://kevin8656.github.io/tags/DotNetCore/"/>
     
-      <category term="ASP.Net Core 3.0" scheme="https://kevin8656.github.io/tags/ASP-Net-Core-3-0/"/>
-    
       <category term="C#" scheme="https://kevin8656.github.io/tags/C/"/>
     
       <category term="MVC" scheme="https://kevin8656.github.io/tags/MVC/"/>
     
       <category term="WebAPI" scheme="https://kevin8656.github.io/tags/WebAPI/"/>
     
-      <category term="EF Core 3.0" scheme="https://kevin8656.github.io/tags/EF-Core-3-0/"/>
-    
       <category term="Visual Studio" scheme="https://kevin8656.github.io/tags/Visual-Studio/"/>
+    
+      <category term="ASP.Net Core 3.0" scheme="https://kevin8656.github.io/tags/ASP-Net-Core-3-0/"/>
+    
+      <category term="EF Core 3.0" scheme="https://kevin8656.github.io/tags/EF-Core-3-0/"/>
     
   </entry>
   
@@ -76,8 +76,6 @@
     
       <category term="DotNetCore" scheme="https://kevin8656.github.io/tags/DotNetCore/"/>
     
-      <category term="ASP.Net Core 3.0" scheme="https://kevin8656.github.io/tags/ASP-Net-Core-3-0/"/>
-    
       <category term="C#" scheme="https://kevin8656.github.io/tags/C/"/>
     
       <category term="MVC" scheme="https://kevin8656.github.io/tags/MVC/"/>
@@ -85,6 +83,8 @@
       <category term="WebAPI" scheme="https://kevin8656.github.io/tags/WebAPI/"/>
     
       <category term="Visual Studio" scheme="https://kevin8656.github.io/tags/Visual-Studio/"/>
+    
+      <category term="ASP.Net Core 3.0" scheme="https://kevin8656.github.io/tags/ASP-Net-Core-3-0/"/>
     
       <category term="SQL Server" scheme="https://kevin8656.github.io/tags/SQL-Server/"/>
     
@@ -114,8 +114,6 @@
     
       <category term="DotNetCore" scheme="https://kevin8656.github.io/tags/DotNetCore/"/>
     
-      <category term="ASP.Net Core 3.0" scheme="https://kevin8656.github.io/tags/ASP-Net-Core-3-0/"/>
-    
       <category term="C#" scheme="https://kevin8656.github.io/tags/C/"/>
     
       <category term="MVC" scheme="https://kevin8656.github.io/tags/MVC/"/>
@@ -123,6 +121,8 @@
       <category term="WebAPI" scheme="https://kevin8656.github.io/tags/WebAPI/"/>
     
       <category term="Visual Studio" scheme="https://kevin8656.github.io/tags/Visual-Studio/"/>
+    
+      <category term="ASP.Net Core 3.0" scheme="https://kevin8656.github.io/tags/ASP-Net-Core-3-0/"/>
     
   </entry>
   
@@ -296,6 +296,8 @@
     
       <category term="DotNetCore" scheme="https://kevin8656.github.io/tags/DotNetCore/"/>
     
+      <category term=".NetCore" scheme="https://kevin8656.github.io/tags/NetCore/"/>
+    
       <category term="C#" scheme="https://kevin8656.github.io/tags/C/"/>
     
       <category term="VisualStudio" scheme="https://kevin8656.github.io/tags/VisualStudio/"/>
@@ -303,8 +305,6 @@
       <category term="MVC" scheme="https://kevin8656.github.io/tags/MVC/"/>
     
       <category term="WebAPI" scheme="https://kevin8656.github.io/tags/WebAPI/"/>
-    
-      <category term=".NetCore" scheme="https://kevin8656.github.io/tags/NetCore/"/>
     
   </entry>
   
