@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>【Vue.js、HTML、JavaScript】上傳圖片在背景轉換成base64，而造成長時間網頁卡住</title>
+      <link href="/2019/11/19/20191119-javascript-file-upload-loading-problem/"/>
+      <url>/2019/11/19/20191119-javascript-file-upload-loading-problem/</url>
+      
+        <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在做網頁系統過程中時常會有需要上傳圖片的需求，而我在做某個案子的時候遇到了個問題，原本工程師寫了一個功能是要上傳圖片到系統中，而他使用了HTML的Input Tag（File Type）。當使用者選取圖片之後，前端會馬上將所有圖片一個一個丟去一個套件中轉換成base64的圖片編碼，並且存入陣列中。而當上傳大量圖片時就會造成前端已經顯示選取圖片完成，而背景卻還在將選取的圖片轉換成base64圖片檔案，造成畫面當機。這篇文要紀錄一下怎麼解決此問題</p><a id="more"></a><p>可以看一下原本的樣子，我選了多張圖片之後，右邊的network其實正在一張一張轉換圖片，而畫面上看起來雖然已經選取完成，但其實還是當機狀態（因為背景在跑）</p><p><img src="0.gif" alt="0"></p><h2 id="逐步解決問題"><a href="#逐步解決問題" class="headerlink" title="逐步解決問題"></a>逐步解決問題</h2><p>最後解決這個問題的方法是在使用HTML Input Tag選擇圖片時，可以先判斷整體圖片大小，控制所有圖片的總大小是否會太大（轉換成base64會太久），進而去控制是要提示使用者“上傳圖片整體大小過大，請重新選取”，或者是要讓使用者順利選擇圖片，並且點上傳按鈕上傳。</p><p>如下圖：</p><p><img src="1.gif" alt></p><h3 id="控制所選圖片的整體大小"><a href="#控制所選圖片的整體大小" class="headerlink" title="控制所選圖片的整體大小"></a>控制所選圖片的整體大小</h3><p>首先，我在Vue.js的template中程式碼如下圖</p><p><img src="2.png" alt="2"></p><p>程式碼如下：</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"container advisory"</span>&gt;</span><br><span class="line">  &lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"file-group"</span>&gt;</span><br><span class="line">    &lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"file"</span>&gt;</span><br><span class="line">      &lt;input type=<span class="string">"file"</span> @change=<span class="string">"handleChangeInput"</span> multiple&gt;</span><br><span class="line">      &lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"icon"</span>&gt;</span><br><span class="line">        &lt;i <span class="class"><span class="keyword">class</span></span>=<span class="string">"zmdi zmdi-cloud-upload"</span>&gt;&lt;/i&gt;</span><br><span class="line">        &lt;p v-show=<span class="string">"!isFileInputActive&amp;&amp;imageTo64LoadingCount==0&amp;&amp;!imageTo64Loading"</span>&gt;選擇圖片&lt;<span class="regexp">/p&gt;</span></span><br><span class="line"><span class="regexp">        &lt;p</span></span><br><span class="line"><span class="regexp">                v-show="isFileInputActive&amp;&amp;imageTo64LoadingCount==0&amp;&amp;!imageTo64Loading"&gt;</span></span><br><span class="line"><span class="regexp">            檔案名稱 &#123;&#123; fileName &#125;&#125;</span></span><br><span class="line"><span class="regexp">        &lt;/</span>p&gt;</span><br><span class="line">          &lt;p v-show=<span class="string">"imageTo64LoadingCount!=0||imageTo64Loading"</span>&gt;正在轉換圖片...&lt;<span class="regexp">/p&gt;</span></span><br><span class="line"><span class="regexp">      &lt;/</span>div&gt;</span><br><span class="line">    &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">  &lt;/</span>div&gt;</span><br><span class="line">&lt;<span class="regexp">/div&gt;</span></span><br></pre></td></tr></table></figure><p>而點input選取圖片會觸發的handleChangeInput()方法如下圖</p><p><img src="3.png" alt="3"></p><p>程式碼如下</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">handleChangeInput(e) &#123;</span><br><span class="line">  <span class="keyword">this</span>.imageTo64Loading = <span class="literal">true</span>;</span><br><span class="line">  <span class="keyword">const</span> files = [...e.target.files];</span><br><span class="line">  <span class="keyword">let</span> filesTotalSize = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">const</span> x <span class="keyword">in</span> files) &#123;</span><br><span class="line">    filesTotalSize += <span class="built_in">parseFloat</span>(((files[x].size / <span class="number">1024</span>) / <span class="number">1024</span>).toFixed(<span class="number">4</span>)); <span class="comment">// MB</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (filesTotalSize &gt; <span class="number">20</span>) &#123;</span><br><span class="line">    <span class="keyword">this</span>.imageTo64Loading = <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">this</span>.$store.commit(<span class="string">'sendMessage'</span>, <span class="string">'圖片總大小超過20MB，請重新選擇'</span>);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    files.forEach(<span class="function">(<span class="params">file</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="comment">// 增加正在轉base64位元圖片的數量</span></span><br><span class="line">      <span class="keyword">this</span>.imageTo64LoadingCount = <span class="keyword">this</span>.imageTo64LoadingCount + <span class="number">1</span>;</span><br><span class="line">      formattedImage(file, (_file, _) =&gt; &#123;</span><br><span class="line">        <span class="keyword">this</span>.fileSelected.push(_file);</span><br><span class="line">        <span class="comment">// 減少正在轉base64位元圖片的數量，全部轉完就會回到0</span></span><br><span class="line">        <span class="keyword">this</span>.imageTo64LoadingCount = <span class="keyword">this</span>.imageTo64LoadingCount - <span class="number">1</span>;</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">this</span>.imageTo64Loading = <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">this</span>.fileName = <span class="keyword">this</span>.getStringFilesName(files);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure><p>在程式碼中我們可以看到，當我觸發了input tag change的時候會觸發handleChangeInput方法，並且第一部我會把Vue.js中的 <code>this.imageTo64Loading</code>調整成true，代表背景正在轉換圖片。</p><p>接下來下面這段就是先跑過所有圖片，先把圖片的大小累加並存到<code>filesTotalSize</code>變數中</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> files = [...e.target.files];</span><br><span class="line">      <span class="keyword">let</span> filesTotalSize = <span class="number">0</span>;</span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">const</span> x <span class="keyword">in</span> files) &#123;</span><br><span class="line">        filesTotalSize += <span class="built_in">parseFloat</span>(((files[x].size / <span class="number">1024</span>) / <span class="number">1024</span>).toFixed(<span class="number">4</span>)); <span class="comment">// MB</span></span><br><span class="line">      &#125;</span><br></pre></td></tr></table></figure><p>然後在我們把圖片丟去轉換成base64格式之前，就會先判斷<code>filesTotalSize</code>是否有超過20MB，超過的話就會直接跳出，並且顯示Error訊息“圖片總大小超過20MB，請重新選擇”</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (filesTotalSize &gt; <span class="number">20</span>) &#123;</span><br><span class="line">        <span class="keyword">this</span>.imageTo64Loading = <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">this</span>.$store.commit(<span class="string">'sendMessage'</span>, <span class="string">'圖片總大小超過20MB，請重新選擇'</span>);</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        ...</span><br><span class="line">      &#125;</span><br></pre></td></tr></table></figure><p>而如果沒有超過，再繼續進行下面的圖片格式轉換</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">else</span> &#123;</span><br><span class="line">        files.forEach(<span class="function">(<span class="params">file</span>) =&gt;</span> &#123;</span><br><span class="line">          <span class="comment">// 增加正在轉base64位元圖片的數量</span></span><br><span class="line">          <span class="keyword">this</span>.imageTo64LoadingCount = <span class="keyword">this</span>.imageTo64LoadingCount + <span class="number">1</span>;</span><br><span class="line">          formattedImage(file, (_file, _) =&gt; &#123;</span><br><span class="line">            <span class="keyword">this</span>.fileSelected.push(_file);</span><br><span class="line">            <span class="comment">// 減少正在轉base64位元圖片的數量，全部轉完就會回到0</span></span><br><span class="line">            <span class="keyword">this</span>.imageTo64LoadingCount = <span class="keyword">this</span>.imageTo64LoadingCount - <span class="number">1</span>;</span><br><span class="line">          &#125;);</span><br><span class="line">        &#125;);</span><br><span class="line">        <span class="keyword">this</span>.imageTo64Loading = <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">this</span>.fileName = <span class="keyword">this</span>.getStringFilesName(files);</span><br><span class="line">      &#125;</span><br></pre></td></tr></table></figure><h3 id="圖片轉換中的狀態控制"><a href="#圖片轉換中的狀態控制" class="headerlink" title="圖片轉換中的狀態控制"></a>圖片轉換中的狀態控制</h3><p>轉換過程中因為是使用forEach把每個file都跑過，所以每跑過一個就會把<code>this.imageTo64LoadingCount</code>這個變數<code>+ 1</code>，代表現在有幾個圖片正在轉換</p><p>而等待<code>formattedImage</code>這個方法的CallBack，就代表轉換完成，就可以把<code>this.imageTo64LoadingCount</code>的數字-1了！</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">formattedImage(file, (_file, _) =&gt; &#123;</span><br><span class="line">  <span class="keyword">this</span>.fileSelected.push(_file);</span><br><span class="line">  <span class="comment">// 減少正在轉base64位元圖片的數量，全部轉完就會回到0</span></span><br><span class="line">  <span class="keyword">this</span>.imageTo64LoadingCount = <span class="keyword">this</span>.imageTo64LoadingCount - <span class="number">1</span>;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure><h2 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h2><p>以上就是大略的解決方法，當然忽略了很多小細節的部分，不過就是紀錄一下我大概是怎麼做到多選檔案Size控制，以及轉換圖片時要有一個狀態顯示，並且把下面的確定按鈕Disable掉（取消也一起不能按，因為背景轉換時其實畫面會當掉，所以連取消都要一起卡住不讓使用者點選）</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 技術踩坑 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> JavaScript </tag>
+            
+            <tag> HTML </tag>
+            
+            <tag> Vue.js </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>【ASP.Net Core 3.0應用程式開發-3】什麼是MVC？什麼是前後端分離？ ft.安裝EF Core 3.0、初始化資料模型對應</title>
       <link href="/2019/10/03/20190930-dotnetcore3beginner-3/"/>
       <url>/2019/10/03/20190930-dotnetcore3beginner-3/</url>
@@ -20,6 +49,8 @@
       
         <tags>
             
+            <tag> Visual Studio </tag>
+            
             <tag> DotNetCore </tag>
             
             <tag> C# </tag>
@@ -27,8 +58,6 @@
             <tag> MVC </tag>
             
             <tag> WebAPI </tag>
-            
-            <tag> Visual Studio </tag>
             
             <tag> ASP.Net Core 3.0 </tag>
             
@@ -57,6 +86,8 @@
       
         <tags>
             
+            <tag> Visual Studio </tag>
+            
             <tag> DotNetCore </tag>
             
             <tag> C# </tag>
@@ -64,8 +95,6 @@
             <tag> MVC </tag>
             
             <tag> WebAPI </tag>
-            
-            <tag> Visual Studio </tag>
             
             <tag> ASP.Net Core 3.0 </tag>
             
@@ -94,6 +123,8 @@
       
         <tags>
             
+            <tag> Visual Studio </tag>
+            
             <tag> DotNetCore </tag>
             
             <tag> C# </tag>
@@ -101,8 +132,6 @@
             <tag> MVC </tag>
             
             <tag> WebAPI </tag>
-            
-            <tag> Visual Studio </tag>
             
             <tag> ASP.Net Core 3.0 </tag>
             
